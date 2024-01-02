@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Bot Chat Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #chat-container {
+            width: 80%;
+            max-width: 600px;
+            margin: auto;
+        }
+        #message-input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        #send-button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #send-button:hover {
+            background-color: #45a049;
+        }
+        #messages {
+            border: 1px solid #ddd;
+            padding: 10px;
+            height: 400px;
+            overflow-y: auto;
+        }
+        .message {
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="messages"></div>
+        <input type="text" id="message-input" placeholder="Type a message...">
+        <button id="send-button">Send</button>
+    </div>
+
+    <script>
+        document.getElementById('send-button').addEventListener('click', function() {
+            var message = document.getElementById('message-input').value;
+            // TODO: Add AJAX call to send the message to your Telegram bot and receive the response
+            addMessageToChat("You: " + message);
+            document.getElementById('message-input').value = '';
+        });
+
+        function addMessageToChat(message) {
+            var messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            messageElement.textContent = message;
+            document.getElementById('messages').appendChild(messageElement);
+        }
+
+        // TODO: Implement the function to receive messages from the Telegram bot
+    </script>
+</body>
+</html>
